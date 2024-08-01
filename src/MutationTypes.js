@@ -1,0 +1,1 @@
+export const SET_SEQUENCES_DATA = 'SET_SEQUENCES_DATA';
