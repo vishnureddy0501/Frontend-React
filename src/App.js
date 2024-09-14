@@ -2,15 +2,19 @@ import React from 'react';
 import SequencesData from './Components/SequencesData.js';
 import LearningReact from './Components/LearningReact.js'
 import Navbar from './Components/NavBar.js'
-import './tailwind.css'
+import RouterConfig from './Components/router';
+import { BrowserRouter } from "react-router-dom";
+import { StoreProvider } from "./UserContextStore/Store.js";
 
 const App = () => {
   return (
     <div>
-      {/* <div>hello world, still working</div> */}
-      {/* <SequencesData /> */}
-      <Navbar />
-      <LearningReact />
+      <StoreProvider>
+          <BrowserRouter>
+              <Navbar />
+              <RouterConfig />
+          </BrowserRouter>
+      </StoreProvider>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const LearningReact = () => {
     }, [newUser])
     return (
         <div>
-            <div>this is my Component</div>
+            <div className="text-[1rem] text-[#ff6347]">this is my Component</div>
                 { 
                     userData.map(item => (
                         <div key={item.name}>
@@ -35,8 +35,13 @@ const LearningReact = () => {
             { !newUser.name && showErrors && (<div className="invalid-name">Enter valid name</div>) }
             <input type="number" placeholder="enter age" value={newUser.age} onChange={(event) => setNewUser({...newUser, age: event.target.value})}/>
             { !newUser.age && showErrors && (<div className="invalid-age">Enter Valid age</div>)}
-            <div className="button" onClick={handleAdduser}>add new user</div>
+            <div className="button" onClick={() => handleAdduser()}>add new user</div>
         </div>
     )
 }
 export default LearningReact;
+/*
+    onClick={handleAdduser} // argument to the onclick must be reference to function.
+    onClick={() => handleAdduser()} //(preferred syntax) the arrow function is a reference. but handleAdduser must be a function call.
+    onClick={() => {handleAdduser()}} // this also works.
+*/
