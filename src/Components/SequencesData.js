@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSequencesData } from './Actions';
+import { setSequencesData } from '../store/Actions';
 
 const SequencesData = () => {
   const dispatch = useDispatch();
