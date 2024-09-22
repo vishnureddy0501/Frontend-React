@@ -1,0 +1,35 @@
+In React, functional components can be either stateless or stateful, depending on whether they use hooks. Class components are traditionally considered stateful, but they can also be stateless.
+
+Here’s a breakdown:
+1. Functional Components:
+
+    Initially, functional components were stateless because they didn’t have the ability to manage state or lifecycle methods.
+    With the introduction of React Hooks (e.g., useState, useEffect), functional components can now manage their own state and lifecycle events, making them stateful if needed.
+
+// Stateful functional component using hooks
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+2. Class Components:
+
+    Class components have been traditionally stateful because they can use the state property and lifecycle methods.
+    However, a class component can also be stateless if it doesn’t use this.state or lifecycle methods.
+
+// Stateless class component
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+Summary:
+
+    Functional components can be both stateless and stateful (thanks to hooks).
+    Class components are typically stateful but can also be stateless.

@@ -1,1 +1,30 @@
-{ } // using single bracket like this means we are keeping some dynamic thing inside it.
+important points:
+----------------
+1. Useeffect is the place where we fetch the data.
+
+2. { } // using single bracket like this means we are keeping some dynamic thing inside it.
+
+3.  onClick={handleAdduser} // argument to the onclick must be reference to function.
+    onClick={() => handleAdduser()} //(preferred syntax) the arrow function is a reference. but handleAdduser must be a function call.
+    onClick={() => {handleAdduser()}} // this also works.
+
+4. Throwing errors: (Error handling if the api response is not expected)
+    throw new Error('something went wrong');
+    
+    try {
+        const response = await axios.get('some end point');
+        if(!response.data.userDetails) {
+            throw new Error('user Details not found');
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+5. How to create custom hooks
+
+    custom hooks in react must start with keyword called "use".
+    eg: useFetch, useFetchedData ..etc
+    custom hooks are nothing but making reusable code. 
+    custom hooks similar to composable functions in vue3.
+
+6. use event.preventDefault() when you want to stop the default action associated with the event from happening.

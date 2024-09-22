@@ -40,8 +40,3 @@ const LearningReact = () => {
     )
 }
 export default LearningReact;
-/*
-    onClick={handleAdduser} // argument to the onclick must be reference to function.
-    onClick={() => handleAdduser()} //(preferred syntax) the arrow function is a reference. but handleAdduser must be a function call.
-    onClick={() => {handleAdduser()}} // this also works.
-*/

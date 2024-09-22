@@ -1,0 +1,75 @@
+Custom Hooks:
+-------------
+In React, custom hooks allow you to extract and reuse stateful logic across different components.
+Example 1: Creating a Custom Hook (useFetch)
+
+// useFetch.js
+import { useState, useEffect } from 'react';
+
+export const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
+
+Example 2: Using the Custom Hook in a Component
+
+You can now use the useFetch hook inside a component to fetch data from an API.
+
+// App.js
+import React from 'react';
+import { useFetch } from './useFetch';
+
+const App = () => {
+  const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/posts');
+
+   /*
+    const { data : new_data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/posts');
+        data renamed to new_data in this component.
+    */
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {data.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+
+How it works:
+
+    useFetch: This hook handles data fetching, manages the loading, error, and data states, and can be reused in any component.
+    Dependency array in useEffect: It ensures that the hook re-fetches data only when the url changes.
+    Returning values: The hook returns data, loading, and error, which can be used by the component.
+
+This structure helps you encapsulate logic in the hook and keep your components clean and reusable.

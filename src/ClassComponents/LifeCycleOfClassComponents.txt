@@ -1,0 +1,50 @@
+Life Cycle of Class components:
+-------------------------------
+1. Mounting Phase (Component is Created & Inserted into the DOM)
+
+Lifecycle methods in this phase:
+    constructor(props):
+        Invoked before the component is mounted.
+        Commonly used to initialize state and bind event handlers.
+        Avoid side effects here (like API calls), as the component hasn’t been mounted yet.
+
+constructor(props) {
+  super(props);
+  this.state = { count: 0 };
+}
+
+static getDerivedStateFromProps(props, state):
+-------------------------------------------------
+    Called right before rendering.
+    This method is rarely used but allows you to update the state based on the received props.
+    It’s a static method, so it can’t access this.
+
+static getDerivedStateFromProps(props, state) {
+    // updating state using props.
+  if (props.count !== state.count) {
+    return { count: props.count };
+  }
+  return null;
+}
+
+render():
+---------
+    The only required method in a class component.
+    It returns the JSX that will be rendered to the DOM.
+
+render() {
+  return <div>{this.state.count}</div>;
+}
+
+componentDidMount(): (data fetching has to done here)
+-------------------
+    This method is called immediately after the component is mounted (inserted into the DOM).
+    Ideal for side effects like fetching data from an API or adding event listeners.
+
+componentDidMount() {
+  console.log('Component mounted!');
+  // Example: Fetch data from an API
+  fetch('/api/data')
+    .then(response => response.json())
+    .then(data => this.setState({ data }));
+}

@@ -1,0 +1,50 @@
+Programatic redirect:
+---------------------
+1. React Router v6 (using useNavigate):
+
+React Router v6 introduces the useNavigate hook, which replaces useHistory from v5.
+
+import { useNavigate } from 'react-router-dom';
+
+function MyComponent() {
+  const navigate = useNavigate();
+
+  const goToHomePage = () => {
+    // Programmatic navigation to the home page
+    navigate('/home');
+  };
+
+  return (
+    <div>
+      <button onClick={goToHomePage}>Go to Home</button>
+    </div>
+  );
+}
+
+export default MyComponent;
+
+    Additional options:
+        navigate(path, { replace: true }): Replace the current route (do not add it to history).
+        navigate(-1): Navigate back in history (like clicking the browser's "Back" button).
+
+
+2. Handling Navigation with Params (React Router v6 Example):
+
+import { useNavigate } from 'react-router-dom';
+
+function MyComponent() {
+  const navigate = useNavigate();
+
+  const goToUserPage = (userId) => {
+    // Navigate with params
+    navigate(`/user/${userId}`);
+  };
+
+  return (
+    <div>
+      <button onClick={() => goToUserPage(5)}>Go to User 5</button>
+    </div>
+  );
+}
+
+export default MyComponent;
