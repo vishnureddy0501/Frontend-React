@@ -6,6 +6,7 @@ import RouterConfig from './Components/router';
 import { BrowserRouter } from "react-router-dom";
 import { StoreProvider } from "./UserContextStore/Store.js";
 import Home from './ClassComponents/Home.js';
+import UseReducerExample from './InterviewPreparation/useReducerExample.js';
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
           <BrowserRouter>
           <div className=' flex flex-row h-[100vh]'>
             <Navbar />
-            <Home />
+            {/* <UseReducerExample /> */}
+            {/* <Home /> */}
             <div className=' basis-[85%]'>
               <RouterConfig />
             </div>

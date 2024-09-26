@@ -1,0 +1,23 @@
+React.memo is a performance optimization tool that helps prevent unnecessary re-renders of functional components.
+https://www.w3schools.com/REACT/react_memo.asp
+eg:
+---
+the component rerenders if the props changes.
+
+import React from "react";
+
+const ChildComponent = ({ value }) => {
+  console.log("Child component rendered");
+  return <div>{value}</div>;
+};
+
+// Memoized component to prevent unnecessary re-renders
+export default React.memo(ChildComponent);
+
+In the example above, ChildComponent will only re-render when the value prop changes.
+
+When Not to Use React.memo
+-----------------------------
+    Low-cost Components: If a component is simple and lightweight, there’s no need to wrap it in React.memo. The overhead of checking for prop changes might outweigh the performance benefits.
+    Frequent Prop Changes: If the component frequently receives new props, React.memo may not provide much benefit. In such cases, it will still re-render often, and the memoization may add unnecessary overhead.
+    State-Driven Rendering: If the component heavily relies on internal state or context rather than props, React.memo won’t have much effect.

@@ -1,0 +1,19 @@
+things need to learn:
+-----------------------
+
+class components (No Need to learn)
+server side rendering vs client side rendering definitions ?
+what is single page application ?
+what is jsx ?
+what is strict mode?
+---------------------
+strict mode runs the application twice. this is for debugging purpose.
+for actual build in production, it will run only once.
+
+props are immutable in any language. it means you should not change props.
+if you destructure the props to another variable and changed that variable value.  (this doesn't means you changed props)
+ but props are immutable.
+
+ Pro tip:
+ ---------
+always use arrow functions only. (for both class components, functional components)

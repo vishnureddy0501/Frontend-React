@@ -1,0 +1,23 @@
+1. Declare Every function as arrow function in react JS. (very very important)
+
+executing some block of code before the functional component is unmounted:
+--------------------------------------------------------------------------
+import React, { useEffect } from "react";
+
+const MyComponent = () => {
+  useEffect(() => {
+    // Code here runs when the component is mounted (on mount)
+    console.log("Component mounted");
+
+    // The return function acts as the cleanup (before unmount)
+    return () => {
+      console.log("Component is about to be unmounted");
+      // This is equivalent to beforeDestroy
+      // Do cleanup tasks like removing event listeners, timers, etc.
+    };
+  }, []); // The empty array ensures this runs only on mount and unmount
+
+  return <div>My Component</div>;
+};
+
+export default MyComponent;

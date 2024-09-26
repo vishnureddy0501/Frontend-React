@@ -1,0 +1,28 @@
+React fragments:
+----------------
+fragments are a way to group multiple elements without adding an extra node to the DOM.
+without using <div></div>, you have to use <> </>
+
+Actual Syntax:
+-----------
+const MyComponent = () => {
+  return (
+    <React.Fragment>
+      <h1>Title</h1>
+      <p>This is a paragraph</p>
+    </React.Fragment>
+  );
+};
+
+shorthand Syntax:
+--------------------
+const MyComponent = () => {
+  return (
+    <>
+      <h1>Title</h1>
+      <p>This is a paragraph</p>
+    </>
+  );
+};
+
+
