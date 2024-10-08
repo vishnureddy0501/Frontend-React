@@ -1,0 +1,39 @@
+React: it is a Library. Not Framework
+
+what is React ?
+--------------
+Library for Building User Interfaces
+
+features of React ?
+------------------
+1. JSX (JavaScript XML)
+2. Component-Based Architecture
+3. Virtual DOM
+5. State Management
+    You can manage state locally in components using hooks like useState or globally using libraries like Redux, React Context API, or MobX.
+6. Hooks
+9. Unidirectional Data Flow
+    In React, data flows in a single direction, from parent components to child components. This makes it easier to reason about your application and helps with debugging.
+
+10. React Router
+11. Context API
+12. Server-Side Rendering (SSR)
+    React can be rendered on the server using frameworks like Next.js, which improves performance and SEO (since HTML is pre-rendered on the server).
+13. Code Splitting & Lazy Loading
+    React supports code splitting and lazy loading to improve performance by only loading parts of the app when they are needed, instead of loading the entire app at once.
+    Example using React.lazy():
+const SomeComponent = React.lazy(() => import('./SomeComponent'));
+
+Default Values in Props:
+------------------------
+"male" is the default value for gender prop.
+
+const ChildComponent = ({ name, age, gender = "male" }) => {
+  return (
+    <div>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{gender}</p>
+    </div>
+  );
+};

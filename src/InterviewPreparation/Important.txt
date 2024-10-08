@@ -1,4 +1,6 @@
 1. Declare Every function as arrow function in react JS. (very very important)
+2. React event handlers are named using camelCase, rather than lowercase.
+3. use useRef for giving refs to elements. it is the most important one.
 
 executing some block of code before the functional component is unmounted:
 --------------------------------------------------------------------------
@@ -21,3 +23,20 @@ const MyComponent = () => {
 };
 
 export default MyComponent;
+
+single page application vs multi page application:
+---------------------------------------------------
+Multi-Page Application (MPA):
+    Page Refreshes: In MPAs, every time a user navigates to a new page, the browser makes a new request to the server for a completely new HTML document. This causes the entire page to reload, which includes fetching the new HTML, CSS, and JavaScript for that specific page.
+    Performance: Because of the full-page reloads, MPAs can be slower in terms of navigation between pages, as each transition requires fetching resources from the server again.
+Single Page Application (SPA):
+    Initial Load: In an SPA, when the user first loads the application, the server sends a bundle containing HTML, CSS, and JavaScript. This bundle is used to render the entire application, and the JavaScript code handles routing and rendering for different views/pages.
+    Navigation: Once the SPA is loaded, navigating between different pages does not cause a full page reload. Instead, JavaScript dynamically updates the content of the current page (using client-side routing) without making additional full-page requests to the server. Only specific data (such as API responses) is fetched if needed.
+    Improved Performance: Since only parts of the page are updated (not the entire page), SPAs generally offer a smoother and faster user experience, especially after the initial load.
+
+we can use params.id as dependency also:
+---------------------------------------
+    const params = useParams();
+    useEffect(() => {
+      // some block of code.
+    },[params.id])

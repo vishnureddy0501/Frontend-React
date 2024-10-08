@@ -1,0 +1,41 @@
+npm install prop-types;
+-----------------------
+for default props no library needed.
+for prop-types, we need this library.
+
+Types of props:
+----------------PropTypes.number
+PropTypes.string
+PropTypes.array
+PropTypes.object
+PropTypes.func
+PropTypes.node
+PropTypes.element
+PropTypes.bool
+PropTypes.symbol
+PropTypes.any
+
+import PropTypes from 'prop-types';
+
+function MyComponent({ name, age, flag }) {
+  return (
+    <div>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+    </div>
+  );
+}
+
+MyComponent.defaultProps = {
+  name: "John Doe",  // default value for 'name'
+  age: 30,           // default value for 'age'
+  flag: 0
+};
+
+MyComponent.propTypes = {
+  name: PropTypes.string.isRequired,  // 'name' is required and should be a string
+  age: PropTypes.number,               // 'age' should be a number
+  flag: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, // 'flag' accepts either string or number
+};
+
+export default MyComponent;

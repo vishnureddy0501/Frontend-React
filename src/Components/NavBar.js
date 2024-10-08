@@ -10,7 +10,8 @@ const NavBar = () => {
         { label: 'View Posts', key: 'listposts', path: '/listposts', icon: 'fa-solid fa-list' }, // View Posts Icon
         { label: 'Add Post', key: 'addposts', path: '/addposts', icon: 'fa-solid fa-plus' }, // Add Post Icon
         { label: 'Settings', key: 'settings', path: '/settings', icon: 'fa-solid fa-cog' }, // Settings Icon
-        { label: 'Help', key: 'help', path: '/help', icon: 'fa-solid fa-question' } // Help Icon
+        { label: 'Help', key: 'help', path: '/help', icon: 'fa-solid fa-question' }, // Help Icon
+        { label: 'Analytics', key: 'analytics', path: '/analytics', icon: 'fa-solid fa-chart-line' } // Help Icon
     ]);
 
     const blogIcon = 'fa-solid fa-layer-group'; // App Icon

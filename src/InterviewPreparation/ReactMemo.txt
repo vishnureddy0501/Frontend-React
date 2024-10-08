@@ -1,4 +1,5 @@
 React.memo is a performance optimization tool that helps prevent unnecessary re-renders of functional components.
+if the store variable is used and it changes. will the component renderes? (test this)
 https://www.w3schools.com/REACT/react_memo.asp
 eg:
 ---

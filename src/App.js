@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { StoreProvider } from "./UserContextStore/Store.js";
 import Home from './ClassComponents/Home.js';
 import UseReducerExample from './InterviewPreparation/useReducerExample.js';
+import Revision from './Components/Revision/Revision.js';
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
             {/* <UseReducerExample /> */}
             {/* <Home /> */}
             <div className=' basis-[85%]'>
-              <RouterConfig />
+              <Revision />
+              {/* <RouterConfig /> */}
             </div>
           </div>
           </BrowserRouter>
