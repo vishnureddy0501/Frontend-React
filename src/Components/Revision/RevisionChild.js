@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react";
 import {useRevisionContext} from "./RevisionContextProvider"
-import { useReducer, useRef, useMemo } from "react";
-import useFetch from "./CustomHook";
+import { useReducer, useRef, useMemo, useState } from "react";
+// import useFetch from "./CustomHook";
 
 const factorialOperation = (val) => {
     // lets assume this is a complex operation.
@@ -12,7 +12,8 @@ const factorialOperation = (val) => {
 // these are default values for props
 const RevisionChild = ({ name = "vishnu", age = 20, methodAsProp}) => {
     const revisionContext = useRevisionContext();
-    const { isAdmin, setIsAdmin } = useFetch('https://jsonplaceholder.typicode.com/users/');
+    // const { isAdmin, setIsAdmin } = useFetch('https://jsonplaceholder.typicode.com/users/');
+        const { isAdmin, setIsAdmin } = useState(false);
     console.log(isAdmin);
     const inputRef = useRef(null);
     const {name: nameFromStore, setName: setNameFromStrore, age: ageFromStore, setAge: setAgeFromStore} = revisionContext;

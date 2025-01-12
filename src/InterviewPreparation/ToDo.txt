@@ -74,7 +74,8 @@ things need to learn:
 
 class components (No Need to learn)
 server side rendering vs client side rendering definitions ?
-what is single page application ?
+what is search engine optimization(SEO) ?
+client side rendering vs server side rendering?
 what is jsx ?
 pure components?
 explain stopPropagation() and preventDefault()?

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import RevisionChild from "./RevisionChild";
+// import RevisionChild from "./RevisionChild";
 import RevisionContextProvider from "./RevisionContextProvider"
 
 
@@ -27,7 +27,7 @@ const Revision = () => {
         <RevisionContextProvider>
             <div>Doing Revision</div>
             <div>{name}, {age}</div>
-            <RevisionChild name={name} age={age} methodAsProp={methodAsProp}/>
+            {/* <RevisionChild name={name} age={age} methodAsProp={methodAsProp}/> */}
             <div className="button" onClick={() => {handleClick();}}>Update Data</div>
         </RevisionContextProvider>
     )

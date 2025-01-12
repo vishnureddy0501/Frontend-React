@@ -1,0 +1,38 @@
+Jest vs React Testing Library:
+-----------------------------
+Jest is a javascript Testing Framework
+Jest is used to run the tests, determines weather the tests failed/ passed and reports the outcome in a human readable manner.
+
+RTL:
+---
+when we run the application in testing mode, we need Virtual DOM for testing the application. RTL provies virtual DOM, for interacting with the application and testing the application.
+
+Types of Tests:
+-------------
+1. Unit Testing
+2. Integration Testing
+3. End to End Testing
+
+Unit Testing:
+-------------
+Testing individual Building Blocks / units like class components, functional components
+Each unit is tested independently
+Dependencies are mocked
+we can run the unit tests in short amount of time and easy for pin point failures.
+easy to write and maintain
+
+Integration Test:
+----------------
+Focus is on testing a combination of units and ensuring they work together.
+Take longer than unit tests.
+
+End to End Tests:
+----------------
+Focus is on testing entire application flow and ensuring it works as designed from start to finish.
+
+Involves real UI, real backend, real services...
+
+
+Automated Testcase:
+-------------------
+Automated Testcase throws an error, when the actual output doesn't match the expected output.
