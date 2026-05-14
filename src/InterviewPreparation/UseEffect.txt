@@ -1,0 +1,237 @@
+console.log(data) in function body:
+-----------------------------------
+	const Sample = ({ data }) => {
+	console.log(data);
+
+	return <div>...</div>;
+	};
+	This runs on every render, before the JSX is returned.
+	If the component re-renders due to a state or prop change, the console log will run again.
+	It does not wait for the DOM to update.
+
+✅ console.log(data) in useEffect:
+---------------------------------
+import { useEffect } from 'react';
+
+const Sample = ({ data }) => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]); // runs only when `data` changes
+};
+
+This runs after the component renders and the DOM is painted.
+It's part of the side-effect lifecycle.
+
+
+
+🔹 What is useEffect?
+
+A React hook for running side effects in function components.
+
+Side effects = anything that affects something outside React’s render process.
+Examples:
+
+Fetching data
+
+Setting up event listeners
+
+Using timers (setTimeout, setInterval)
+
+Updating document title
+
+🔹 Basic Syntax
+useEffect(() => {
+  // effect code here
+  return () => {
+    // cleanup code (optional)
+  };
+}, [dependencies]);
+
+
+First argument → function to run (the effect).
+
+Return inside → cleanup function (optional).
+
+Second argument → dependency array (decides when the effect runs).
+
+🔹 Dependency Array Rules
+1. No dependency array
+useEffect(() => {
+  console.log("Runs after every render");
+});
+
+
+👉 Runs after every render (initial + updates).
+
+2. Empty dependency array []
+useEffect(() => {
+  console.log("Runs only once (after first render)");
+}, []);
+
+
+👉 Runs only once (good for API calls, one-time setup).
+
+3. With dependencies [x, y]
+useEffect(() => {
+  console.log("Runs when count changes:", count);
+}, [count]);
+
+
+👉 Runs when any dependency changes.
+
+If multiple values are inside, it re-runs when any of them changes.
+
+🔹 Cleanup Function
+
+Why cleanup? Because effects can “stack up.”
+Example: event listeners, timers, subscriptions.
+
+useEffect(() => {
+  const id = setInterval(() => {
+    console.log("Tick");
+  }, 1000);
+
+  return () => {
+    clearInterval(id); // cleanup old interval
+  };
+}, []);
+
+
+⚡ Without cleanup → every render adds a new interval → memory leaks & duplicate effects.
+
+🔹 Lifecycle Analogy
+
+Think of useEffect as combining componentDidMount, componentDidUpdate, and componentWillUnmount (from class components).
+
+[] → componentDidMount
+
+[deps] → componentDidUpdate (on deps change)
+
+return → componentWillUnmount
+
+🔹 Execution Timing
+
+useEffect runs after paint (render).
+→ Browser updates UI first, then effect runs.
+
+This makes UI stay responsive.
+
+👉 If you need to run code before paint (like measuring DOM), use useLayoutEffect instead.
+
+🔹 Common Patterns
+✅ Data Fetching
+useEffect(() => {
+  async function fetchData() {
+    const res = await fetch("/api/data");
+    const json = await res.json();
+    setData(json);
+  }
+  fetchData();
+}, []);
+
+✅ Event Listener
+useEffect(() => {
+  function handleResize() {
+    console.log("Window resized:", window.innerWidth);
+  }
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
+✅ Debouncing (you already saw this)
+useEffect(() => {
+  const handler = setTimeout(() => {
+    setDebounced(search);
+  }, 500);
+
+  return () => clearTimeout(handler);
+}, [search]);
+
+✅ Sync with State / Props
+useEffect(() => {
+  document.title = `Count: ${count}`;
+}, [count]);
+
+🔹 Gotchas & Best Practices
+
+Dependency array correctness
+
+Always include everything you use inside the effect (state, props, functions).
+
+React’s ESLint plugin warns you if you miss something.
+
+useEffect(() => {
+  console.log(user.name); 
+}, [user]); // include user
+
+
+Avoid infinite loops
+
+useEffect(() => {
+  setCount(count + 1); // ❌ causes re-render → effect runs → re-render again...
+}, [count]);
+
+
+✅ Fix: use functional update or conditionally update.
+
+Cleanup is critical
+
+Without cleanup, you get memory leaks or duplicate listeners.
+
+Always return a cleanup function for intervals, listeners, subscriptions.
+
+Async functions directly inside useEffect are not allowed
+❌ Wrong:
+
+useEffect(async () => {
+  const res = await fetch("/api");
+}, []);
+
+
+✅ Correct:
+
+useEffect(() => {
+  async function fetchData() {
+    const res = await fetch("/api");
+  }
+  fetchData();
+}, []);
+
+
+Multiple effects instead of one giant effect
+
+useEffect(() => {
+  // for fetching data
+}, []);
+
+useEffect(() => {
+  // for event listeners
+}, []);
+
+
+Easier to manage than mixing unrelated logic.
+
+🔹 Visual Mental Model
+
+Think of it like this:
+
+Render happens.
+
+React commits UI to screen.
+
+useEffect runs.
+
+Next render → cleanup runs → new effect runs.
+
+✅ With this, you now understand:
+
+When useEffect runs
+
+Why cleanup exists
+
+Dependency array rules
+
+Common pitfalls

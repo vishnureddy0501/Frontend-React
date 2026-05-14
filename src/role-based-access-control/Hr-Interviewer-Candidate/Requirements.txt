@@ -1,0 +1,45 @@
+Roles
+	HR
+		Can create events
+		Can add candidates
+		Can schedule interviews
+
+	Interviewer
+		Can see events he is part of
+		Can submit feedback
+
+	Candidate
+		Can see their interview schedule
+
+	Admin
+		Can manage everything
+
+
+Permissions
+	create:event
+	add:candidate
+	schedule:interview
+	view:assigned:events
+	submit:feedback
+	view:interview:schedule
+	manage:all
+
+Mapping roles to Permissions:
+-----------------------------
+const rolePermissions = {
+  admin: [
+    "manage:all"
+  ],
+  hr: [
+    "create:event",
+    "add:candidate",
+    "schedule:interview"
+  ],
+  interviewer: [
+    "view:assigned:events",
+    "submit:feedback"
+  ],
+  candidate: [
+    "view:interview:schedule"
+  ]
+};

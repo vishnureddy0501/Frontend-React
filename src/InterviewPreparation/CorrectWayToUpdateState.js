@@ -8,10 +8,12 @@ const Revision = () => {
 	});
 
 	const incrementAge = () => {
-		setState((prevState) => ({
-			...prevState,
-			age: prevState.age + 1,
-		}));
+		setState((prevState) => {
+			return {
+				...prevState,
+				age: prevState.age + 1,
+			}
+		});
 	};
 
 	return (

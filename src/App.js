@@ -8,8 +8,6 @@ import { StoreProvider } from "./UserContextStore/Store.js";
 import Home from './ClassComponents/Home.js';
 import UseReducerExample from './InterviewPreparation/useReducerExample.js';
 import Revision from './Components/Revision/Revision.js';
-import DebounceExample from './InterviewPreparation/Debounce.js';
-import DebounceThrottle from './InterviewPreparation/Debounce_Throttle.js';
 const App = () => {
   return (
     <div>
@@ -22,8 +20,6 @@ const App = () => {
             <div className=' basis-[85%]'>
               <div>learn react</div>
               <Revision />
-              <DebounceExample/>
-              <DebounceThrottle />
               {/* <RouterConfig /> */}
             </div>
           </div>

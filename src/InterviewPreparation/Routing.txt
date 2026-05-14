@@ -48,3 +48,12 @@ function MyComponent() {
 }
 
 export default MyComponent;
+
+
+Link vs NavLink:
+-----------------
+
+Feature	        <Link>	                <NavLink>
+Navigation	    ✅ Yes	                ✅ Yes
+Active styling	❌ No built-in support	✅ Built-in isActive detection & styling
+Best for Tabs	🚫 No	                 ✅ Yes
